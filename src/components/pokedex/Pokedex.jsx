@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllPokemons } from '../../store/slices/pokemons.slices';
 import pokedexImg from '../../assets/img/pokedex.png'
+import PokeCard from './PokeCard';
+
+
 
 const Pokedex = () => {
 
@@ -14,18 +17,21 @@ const Pokedex = () => {
 
 
   const pokemons = useSelector(state => state.pokemons) 
-  console.log(pokemons);
+
   return (
 
     <div className='h-screen align-middle'>
       <img className='w-80 mt-10' src={pokedexImg} alt="" />
-
-      {
-      pokemons?.map(pokemon => {
-
-      })
-      }
       
+      {pokemons?.map(pokemon => (
+
+        <PokeCard 
+        key={pokemon.url}
+        url={pokemon.url}
+        />
+
+      ))}
+
     </div>
   )
 }
